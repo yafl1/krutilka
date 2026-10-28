@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07070d">
+  <title>Вопросы и ответы — Крутилка</title>
+  <meta name="description" content="Как работает колесо, честная ли случайность, где хранится список вариантов, нужно ли регистрироваться и что делать, если варианты пропали.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230b0b14'/%3E%3Cpath d='M32 4a28 28 0 0 1 24.2 14L32 32z' fill='%238b5cf6'/%3E%3Cpath d='M56.2 18A28 28 0 0 1 43 57.2L32 32z' fill='%2322d3ee'/%3E%3Cpath d='M43 57.2A28 28 0 0 1 8.4 48L32 32z' fill='%2334d399'/%3E%3Cpath d='M8.4 48A28 28 0 0 1 8.4 16L32 32z' fill='%23fbbf24'/%3E%3Cpath d='M8.4 16A28 28 0 0 1 32 4l0 28z' fill='%23fb7185'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%230b0b14'/%3E%3C/svg%3E">
+  <link rel="canonical" href="https://koleso-vybora.ru/faq">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Крутилка">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://koleso-vybora.ru/faq">
+  <meta property="og:title" content="Вопросы и ответы — Крутилка">
+  <meta property="og:description" content="Честная ли случайность, где хранится список, нужно ли регистрироваться.">
+  <meta property="og:image" content="https://koleso-vybora.ru/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js?v=1"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Колесо выбирает честно?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. Победитель определяется положением колеса в момент остановки, а разгон считается по криптографическому генератору случайных чисел браузера (crypto.getRandomValues). Результат нельзя предсказать заранее."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужна ли регистрация?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Колесо работает без аккаунта, без входа и без отправки данных на сервер."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Где хранится список вариантов?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Только в вашем браузере, в localStorage. Сайт не получает и не сохраняет этот список."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Почему варианты пропали?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Данные хранятся в браузере и удаляются вместе с данными сайта, в режиме инкогнито или после очистки истории. Восстановить их нельзя — список нужно ввести заново."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько вариантов можно добавить?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "До 24, но удобнее 4–8: при большем количестве подписи на секторах становятся нечитаемыми."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Работает ли колесо без интернета?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, после загрузки страницы. Шрифты и скрипты хранятся на том же домене, внешних запросов нет."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли крутить дважды, если результат не понравился?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Технически можно, но тогда это уже не жеребьёвка. Договоритесь о правиле заранее: один прокрут — один результат."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как открыть готовый набор вариантов?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На странице «Готовые колёса» выберите набор — колесо откроется с уже заполненным списком. Свои варианты при этом не стираются, пока вы не начнёте редактировать."
+          }
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Крутилка — на главную">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Крутилка</span>
+    </a>
+    <div class="topbar-side">
+      <a class="pill" href="index.html">Открыть колесо</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить светлую тему" title="Включить светлую тему" aria-pressed="false">
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.7 8.7 0 1 0 11.1 11.1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Разделы сайта">
+    <a href="index.html">Колесо</a>
+    <a href="kolesa.html">Готовые колёса</a>
+    <a href="articles.html">Статьи</a>
+    <a href="faq.html" aria-current="page">Вопросы и ответы</a>
+    <a href="about.html">О сайте</a>
+  </nav>
+
+  <main class="doc">
+    <p class="doc-kicker">Справка</p>
+    <h1>Вопросы и ответы</h1>
+    <p class="doc-date">Обновлено 28 октября 2026</p>
+
+    <p class="doc-lead">
+      Коротко о том, как устроено колесо и что происходит с вашими данными.
+      Если ответа нет — напишите, контакт внизу страницы.
+    </p>
+
+    <div class="faq">
+      <details open>
+        <summary>Колесо выбирает честно?</summary>
+        <p>
+          Да. Победитель определяется положением колеса в момент остановки, а
+          разгон считается по криптографическому генератору случайных чисел
+          браузера (<code>crypto.getRandomValues</code>). Предсказать результат
+          заранее нельзя, и сайт его не узнаёт и не сохраняет.
+        </p>
+      </details>
+
+      <details>
+        <summary>Нужна ли регистрация?</summary>
+        <p>
+          Нет. Ни аккаунта, ни входа, ни подтверждения почты. Открыли страницу —
+          можно крутить.
+        </p>
+      </details>
+
+      <details>
+        <summary>Где хранится список вариантов?</summary>
+        <p>
+          Только в вашем браузере, в <code>localStorage</code>. На сервер он не
+          отправляется: у сайта нет серверной части, которая принимала бы такие
+          данные.
+        </p>
+      </details>
+
+      <details>
+        <summary>Почему варианты пропали?</summary>
+        <p>
+          Список удаляется вместе с данными сайта: после очистки истории,
+          в режиме инкогнито или если браузер сам почистил хранилище. Вернуть
+          его нельзя — нужно ввести заново. Это обратная сторона того, что
+          данные не уходят на сервер.
+        </p>
+      </details>
+
+      <details>
+        <summary>Сколько вариантов можно добавить?</summary>
+        <p>
+          Технически до 24. Практически — 4–8: при большем количестве сектора
+          становятся тонкими, а подписи нечитаемыми на телефоне.
+        </p>
+      </details>
+
+      <details>
+        <summary>Работает ли колесо без интернета?</summary>
+        <p>
+          Да, после того как страница загрузилась. Шрифты и скрипты лежат на том
+          же домене, внешних запросов нет. Можно сохранить страницу и открывать
+          локально.
+        </p>
+      </details>
+
+      <details>
+        <summary>Можно ли крутить дважды, если результат не понравился?</summary>
+        <p>
+          Технически — да, кнопка никуда не денется. По смыслу — тогда это уже
+          не жеребьёвка, а выбор удобного результата. Договоритесь о правиле
+          заранее: один прокрут — один результат.
+        </p>
+      </details>
+
+      <details>
+        <summary>Как открыть готовый набор вариантов?</summary>
+        <p>
+          На странице <a href="kolesa.html">«Готовые колёса»</a> выберите набор —
+          колесо откроется с заполненным списком. Ваши прежние варианты не
+          стираются, пока вы не начнёте редактировать список.
+        </p>
+      </details>
+
+      <details>
+        <summary>Можно ли встроить колесо на свой сайт?</summary>
+        <p>
+          Готового кода для вставки нет. Но можно поставить обычную ссылку на
+          Крутилку — она откроется в новой вкладке и будет работать.
+        </p>
+      </details>
+
+      <details>
+        <summary>Собираете ли вы данные посетителей?</summary>
+        <p>
+          Своих cookie сайт не ставит и список вариантов не получает. Когда
+          включена реклама, сторонняя рекламная сеть может ставить свои cookie —
+          это описано в
+          <a href="privacy.html">политике конфиденциальности</a>.
+        </p>
+      </details>
+    </div>
+
+    <h2>Не нашли ответ?</h2>
+    <p>
+      Напишите: <a href="mailto:koleso-vybora@mail.ru">koleso-vybora@mail.ru</a>.
+      Укажите браузер и устройство — так проще повторить проблему.
+    </p>
+
+    <div class="doc-cta">
+      <p>Всё понятно? Тогда к делу.</p>
+      <a class="primary" href="index.html">Открыть колесо</a>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <nav class="foot-links" aria-label="Разделы сайта">
+      <a href="kolesa.html">Готовые колёса</a>
+      <a href="articles.html">Статьи</a>
+      <a href="faq.html">Вопросы и ответы</a>
+      <a href="about.html">О сайте</a>
+      <a href="privacy.html">Политика конфиденциальности</a>
+    </nav>
+    <span>Крутилка — бесплатное колесо выбора. Работает в браузере, без регистрации.</span>
+  </footer>
+</body>
+</html>

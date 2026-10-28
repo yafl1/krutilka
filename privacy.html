@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07070d">
+  <title>Политика конфиденциальности — Крутилка</title>
+  <meta name="description" content="Какие данные собирает Крутилка: localstorage, cookie, реклама. Что хранится в браузере и что не отправляется на сервер.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230b0b14'/%3E%3Cpath d='M32 4a28 28 0 0 1 24.2 14L32 32z' fill='%238b5cf6'/%3E%3Cpath d='M56.2 18A28 28 0 0 1 43 57.2L32 32z' fill='%2322d3ee'/%3E%3Cpath d='M43 57.2A28 28 0 0 1 8.4 48L32 32z' fill='%2334d399'/%3E%3Cpath d='M8.4 48A28 28 0 0 1 8.4 16L32 32z' fill='%23fbbf24'/%3E%3Cpath d='M8.4 16A28 28 0 0 1 32 4l0 28z' fill='%23fb7185'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%230b0b14'/%3E%3C/svg%3E">
+  <link rel="canonical" href="https://koleso-vybora.ru/privacy">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Крутилка">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://koleso-vybora.ru/privacy">
+  <meta property="og:title" content="Политика конфиденциальности — Крутилка">
+  <meta property="og:description" content="Какие данные хранятся в браузере и что не отправляется на сервер.">
+  <meta property="og:image" content="https://koleso-vybora.ru/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js?v=1"></script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Крутилка — на главную">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Крутилка</span>
+    </a>
+    <div class="topbar-side">
+      <a class="pill" href="index.html">Открыть колесо</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить светлую тему" title="Включить светлую тему" aria-pressed="false">
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.7 8.7 0 1 0 11.1 11.1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Разделы сайта">
+    <a href="index.html">Колесо</a>
+    <a href="kolesa.html">Готовые колёса</a>
+    <a href="articles.html">Статьи</a>
+    <a href="faq.html">Вопросы и ответы</a>
+    <a href="about.html">О сайте</a>
+  </nav>
+
+  <main class="doc">
+
+    <h1>Политика конфиденциальности</h1>
+    <p class="doc-date">Действует с 28 октября 2026 года</p>
+
+    <p>
+      Эта страница объясняет простым языком, какие данные появляются при
+      использовании сайта Крутилка, где они хранятся и кто имеет к ним доступ.
+    </p>
+
+    <h2>Коротко</h2>
+    <div class="card">
+      <p>
+        У сайта нет аккаунтов, нет базы данных и нет серверной части, которая
+        сохраняла бы ваши варианты. Список вариантов и настройки лежат только
+        в вашем браузере. Мы их не видим.
+      </p>
+    </div>
+
+    <h2>Что хранится в вашем браузере</h2>
+    <ul>
+      <li><strong>Список вариантов и настройки</strong> (звук, режим выбывания) —
+        в <code>localStorage</code> под ключами сайта. Нужны, чтобы после
+        перезагрузки страницы всё осталось на месте.</li>
+      <li><strong>Отметка о согласии с cookie</strong> — тоже <code>localStorage</code>,
+        чтобы не показывать плашку каждый раз.</li>
+    </ul>
+    <p>
+      Эти данные не покидают устройство. Удалить их можно в настройках браузера:
+      «Данные сайтов» → найти сайт → удалить. Кнопка «Сбросить» на самом колесе
+      очищает только список вариантов.
+    </p>
+
+    <h2>Файлы cookie, статистика и реклама</h2>
+    <p>
+      Собственных cookie сайт не ставит. Для статистики посещений используется
+      <strong>Яндекс Метрика</strong> — сервис Яндекса. Он записывает cookie
+      и обезличенные сведения о визите: адрес страницы, источник перехода,
+      тип устройства, примерный город. Это нужно, чтобы понимать, какие разделы
+      читают, и улучшать сайт.
+    </p>
+    <ul>
+      <li>данные Метрики обрабатывает Яндекс по своим правилам —
+        <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">политика конфиденциальности Яндекса</a>;</li>
+      <li>в счётчике отключён Вебвизор: он записывал бы содержимое страницы,
+        а в нём находится ваш список вариантов. Остальные отчёты Метрики
+        содержимое списка не передают;</li>
+      <li>отключить сбор статистики можно блокировщиком или запретом cookie
+        в браузере — колесо при этом работает без ограничений.</li>
+    </ul>
+    <p>
+      Когда на сайте включена реклама, рекламная сеть может устанавливать свои
+      cookie и похожие идентификаторы, чтобы показывать объявления и считать
+      показы.
+    </p>
+    <ul>
+      <li>рекламный код загружается сторонней сетью, её правила описаны
+        в документации этой сети;</li>
+      <li>управлять персонализированной рекламой можно в настройках
+        рекламного кабинета или через блокировщик;</li>
+      <li>если реклама отключена блокировщиком, колесо продолжает работать
+        без ограничений.</li>
+    </ul>
+
+    <h2>Чего сайт не делает</h2>
+    <ul>
+      <li>не запрашивает имя, телефон, почту;</li>
+      <li>не требует регистрации или входа;</li>
+      <li>не отправляет список вариантов на сервер;</li>
+      <li>не продаёт данные и не передаёт их третьим лицам, кроме сервисов
+        статистики и рекламы, перечисленных выше.</li>
+    </ul>
+
+    <h2>Внешние ресурсы</h2>
+    <p>
+      Шрифты, стили и скрипты сайта хранятся на том же домене — за ними браузер
+      к сторонним серверам не обращается. Исключения: скрипт Яндекс Метрики
+      (<code>mc.yandex.ru</code>), рекламный код рекламной сети, когда он включён,
+      и сервис аналитики Cloudflare.
+    </p>
+
+    <h2>Ваши права</h2>
+    <p>
+      Поскольку персональные данные на сервере не хранятся, отозвать согласие или
+      запросить удаление данных можно самостоятельно — очисткой данных сайта
+      в браузере. Если остались вопросы, напишите:
+      <a href="mailto:koleso-vybora@mail.ru">koleso-vybora@mail.ru</a>.
+    </p>
+
+    <h2>Изменения</h2>
+    <p>
+      Политика может обновляться: например, при подключении новой рекламной сети.
+      Дата последнего изменения указана в начале страницы.
+    </p>
+
+    <p><a href="index.html">Вернуться к колесу</a></p>
+  </main>
+
+  <footer class="foot">
+    <nav class="foot-links" aria-label="Разделы сайта">
+      <a href="kolesa.html">Готовые колёса</a>
+      <a href="articles.html">Статьи</a>
+      <a href="faq.html">Вопросы и ответы</a>
+      <a href="about.html">О сайте</a>
+      <a href="privacy.html">Политика конфиденциальности</a>
+    </nav>
+    <span>Крутилка — бесплатное колесо выбора. Работает в браузере, без регистрации.</span>
+  </footer>
+</body>
+</html>

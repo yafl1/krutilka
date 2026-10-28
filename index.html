@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07070d">
+  <title>Крутилка — колесо голосования</title>
+  <meta name="description" content="Соберите варианты и выберите победителя прокруткой колеса.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230b0b14'/%3E%3Cpath d='M32 4a28 28 0 0 1 24.2 14L32 32z' fill='%238b5cf6'/%3E%3Cpath d='M56.2 18A28 28 0 0 1 43 57.2L32 32z' fill='%2322d3ee'/%3E%3Cpath d='M43 57.2A28 28 0 0 1 8.4 48L32 32z' fill='%2334d399'/%3E%3Cpath d='M8.4 48A28 28 0 0 1 8.4 16L32 32z' fill='%23fbbf24'/%3E%3Cpath d='M8.4 16A28 28 0 0 1 32 4l0 28z' fill='%23fb7185'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%230b0b14'/%3E%3C/svg%3E">
+
+  <!-- Адрес сайта. Перед публикацией заменить через: python tools/set-domain.py https://ваш-домен -->
+  <link rel="canonical" href="https://koleso-vybora.ru/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Крутилка">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://koleso-vybora.ru/">
+  <meta property="og:title" content="Крутилка — колесо голосования">
+  <meta property="og:description" content="Добавьте варианты и раскрутите колесо. Победитель выбран честно — без споров и считалок.">
+  <meta property="og:image" content="https://koleso-vybora.ru/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Крутилка — колесо голосования">
+  <meta name="twitter:description" content="Добавьте варианты и раскрутите колесо. Победитель выбран честно.">
+  <meta name="twitter:image" content="https://koleso-vybora.ru/og-image.png">
+
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js?v=1"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Крутилка",
+      "url": "https://koleso-vybora.ru/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "inLanguage": "ru",
+      "description": "Колесо голосования: добавьте варианты и выберите победителя случайным образом.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RUB" }
+    }
+  </script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="app">
+    <!-- Верхний рекламный блок. Стоит над шапкой, а не над колесом:
+         по правилам РСЯ баннер не должен примыкать к кнопке «Крутить»
+         и другим элементам управления. Показывается при ads: true (site.js) -->
+    <div class="ad-slot ad-slot--top" data-ad-slot="top" hidden></div>
+
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Крутилка — на главную">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Крутилка</span>
+      </a>
+      <div class="topbar-side">
+        <span class="pill"><span class="pill-dot" aria-hidden="true"></span>колесо голосования</span>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить светлую тему" title="Включить светлую тему" aria-pressed="false">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.7 8.7 0 1 0 11.1 11.1z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="site-nav" aria-label="Разделы сайта">
+      <a href="index.html" aria-current="page">Колесо</a>
+      <a href="kolesa.html">Готовые колёса</a>
+      <a href="articles.html">Статьи</a>
+      <a href="faq.html">Вопросы и ответы</a>
+      <a href="about.html">О сайте</a>
+    </nav>
+
+    <main class="layout">
+      <section class="stage" aria-label="Колесо">
+        <div class="wheel-shell">
+          <div class="wheel-holder" id="wheelHolder">
+            <canvas id="wheel" role="img" aria-label="Колесо с вариантами"></canvas>
+            <div class="pointer" aria-hidden="true"></div>
+            <button class="hub" id="spinBtn" type="button" title="Крутить колесо (Space)">
+              <span class="hub-text" id="hubText">Крутить</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="stage-hint">
+          <kbd>Прокрутка</kbd> над колесом, перетаскивание или <kbd>Space</kbd>
+        </p>
+      </section>
+
+      <aside class="panel" aria-label="Настройки">
+        <div class="panel-head">
+          <h2>Варианты</h2>
+          <span class="count" id="count">0 вариантов</span>
+        </div>
+
+        <form class="add-row" id="addForm" autocomplete="off">
+          <input id="addInput" type="text" placeholder="Добавить вариант…" maxlength="60" aria-label="Новый вариант">
+          <button type="submit" aria-label="Добавить вариант">+</button>
+        </form>
+        <p class="add-hint">Несколько вариантов можно вставить через запятую</p>
+
+        <ul class="options" id="options"></ul>
+        <p class="empty" id="emptyState">Добавьте минимум два варианта, чтобы раскрутить колесо.</p>
+
+        <div class="panel-sep"></div>
+
+        <div class="toggles">
+          <label class="switch">
+            <input type="checkbox" id="eliminate">
+            <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+            <span class="switch-text">
+              <strong>Режим выбывания</strong>
+              <em>Победитель исчезает из списка</em>
+            </span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" id="sound" checked>
+            <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+            <span class="switch-text">
+              <strong>Звук</strong>
+              <em>Щелчки при вращении</em>
+            </span>
+          </label>
+        </div>
+
+        <div class="panel-actions">
+          <button class="ghost" id="shuffleBtn" type="button">Перемешать</button>
+          <button class="ghost danger" id="resetBtn" type="button">Сбросить</button>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Нижний рекламный блок: под колесом, с отступом от панели управления -->
+    <div class="ad-slot ad-slot--bottom" data-ad-slot="bottom" hidden></div>
+
+    <footer class="foot">
+      <span>Работает офлайн · настройки хранятся локально в браузере</span>
+      <nav class="foot-links" aria-label="Разделы сайта">
+        <a href="kolesa.html">Готовые колёса</a>
+        <a href="articles.html">Статьи</a>
+        <a href="faq.html">Вопросы и ответы</a>
+        <a href="about.html">О сайте</a>
+        <a href="privacy.html">Политика конфиденциальности</a>
+      </nav>
+    </footer>
+  </div>
+
+  <div class="result" id="result" hidden>
+    <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultLabel">
+      <p class="result-label" id="resultLabel">Выпало</p>
+      <p class="result-value" id="resultValue">—</p>
+      <p class="result-note" id="resultNote" hidden></p>
+      <div class="result-actions">
+        <button class="primary" id="againBtn" type="button">Ещё раз</button>
+        <button class="ghost" id="closeBtn" type="button">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span id="toastText"></span>
+    <button id="toastAction" type="button" hidden>Вернуть</button>
+  </div>
+
+  <noscript>Для работы колеса нужен JavaScript.</noscript>
+
+  <!-- Уведомление о cookie. Появляется, когда включены баннеры или Метрика (site.js) -->
+  <div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Использование cookie" hidden>
+    <p>
+      Сайт использует cookie для показа рекламы и статистики.
+      <a href="privacy.html">Подробнее</a>
+    </p>
+    <button class="primary" id="cookieOk" type="button">Понятно</button>
+  </div>
+
+  <script src="site.js?v=2" defer></script>
+  <script src="presets.js?v=1" defer></script>
+  <script src="app.js?v=2" defer></script>
+</body>
+</html>

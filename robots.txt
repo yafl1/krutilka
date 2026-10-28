@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://koleso-vybora.ru/sitemap.xml
