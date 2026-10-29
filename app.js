@@ -684,16 +684,33 @@ function tickSound() {
 
 /* ============ конфетти ============ */
 
+// Конфетти считается по времени (dt в секундах), а не «порция на кадр».
+// Раньше при просадке FPS оно замедлялось: на кадр приходился один и тот же
+// шаг, и при 25 кадрах в секунду всё летело в 2,5 раза медленнее.
+const CONFETTI_GRAVITY = 620;   // px/с²
+const CONFETTI_DRAG_X = 0.48;   // затухание по горизонтали, 1/с
+const CONFETTI_DRAG_Y = 0.24;   // затухание по вертикали, 1/с
+const CONFETTI_FADE = 0.36;     // life за секунду (живёт ~2,8 с)
+const CONFETTI_MAX_DT = 0.1;    // потолок шага: после фоновой вкладки не телепортируем
+
+let confettiW = 0;
+let confettiH = 0;
+let confettiLast = 0;
+
 function resizeConfetti() {
-  const ratio = Math.min(2, window.devicePixelRatio || 1);
-  confettiCanvas.width = Math.round(window.innerWidth * ratio);
-  confettiCanvas.height = Math.round(window.innerHeight * ratio);
+  // Конфетти — мелкие вращающиеся прямоугольники: двойная плотность пикселей
+  // на 1080p стоит заметных кадров, а разницы почти не видно.
+  const ratio = Math.min(1.5, window.devicePixelRatio || 1);
+  confettiW = window.innerWidth;
+  confettiH = window.innerHeight;
+  confettiCanvas.width = Math.round(confettiW * ratio);
+  confettiCanvas.height = Math.round(confettiH * ratio);
   cctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 }
 
 function burstConfetti() {
-  const w = window.innerWidth;
-  const h = window.innerHeight;
+  const w = confettiW || window.innerWidth;
+  const h = confettiH || window.innerHeight;
 
   const origins = [
     { x: -20, y: h + 12, base: -Math.PI / 2 + 0.55 },
@@ -703,7 +720,7 @@ function burstConfetti() {
   for (const origin of origins) {
     for (let i = 0; i < 64; i += 1) {
       const angle = origin.base + (Math.random() - 0.5) * 0.8;
-      const speed = 11 + Math.random() * 9;
+      const speed = 660 + Math.random() * 540;   // px/с
       particles.push({
         x: origin.x + (Math.random() - 0.5) * 24,
         y: origin.y + (Math.random() - 0.5) * 16,
@@ -712,32 +729,42 @@ function burstConfetti() {
         w: 4 + Math.random() * 7,
         h: 3 + Math.random() * 6,
         rot: Math.random() * Math.PI,
-        vr: (Math.random() - 0.5) * 0.34,
+        vr: (Math.random() - 0.5) * 20,           // рад/с
         color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
         life: 1
       });
     }
   }
 
+  confettiLast = 0;
   if (!confettiRaf) confettiRaf = requestAnimationFrame(confettiFrame);
 }
 
-function confettiFrame() {
+function confettiFrame(now) {
   confettiRaf = 0;
-  const w = window.innerWidth;
-  const h = window.innerHeight;
+
+  const dt = confettiLast
+    ? Math.min(CONFETTI_MAX_DT, Math.max(0, (now - confettiLast) / 1000))
+    : 1 / 60;
+  confettiLast = now;
+
+  const w = confettiW;
+  const h = confettiH;
 
   cctx.clearRect(0, 0, w, h);
 
+  const dragX = Math.exp(-CONFETTI_DRAG_X * dt);
+  const dragY = Math.exp(-CONFETTI_DRAG_Y * dt);
+
   for (let i = particles.length - 1; i >= 0; i -= 1) {
     const p = particles[i];
-    p.vy += 0.17;
-    p.vx *= 0.992;
-    p.vy *= 0.996;
-    p.x += p.vx;
-    p.y += p.vy;
-    p.rot += p.vr;
-    p.life -= 0.006;
+    p.vy += CONFETTI_GRAVITY * dt;
+    p.vx *= dragX;
+    p.vy *= dragY;
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.rot += p.vr * dt;
+    p.life -= CONFETTI_FADE * dt;
 
     if (p.life <= 0 || p.y > h + 40) {
       particles.splice(i, 1);
