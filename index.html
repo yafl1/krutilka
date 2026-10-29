@@ -10,6 +10,9 @@
 
   <!-- Адрес сайта. Перед публикацией заменить через: python tools/set-domain.py https://ваш-домен -->
   <link rel="canonical" href="https://koleso-vybora.ru/">
+  <link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/">
+  <link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/">
+  <link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Крутилка">
   <meta property="og:locale" content="ru_RU">
@@ -25,7 +28,7 @@
   <meta name="twitter:image" content="https://koleso-vybora.ru/og-image.png">
 
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
   <script src="theme.js?v=1"></script>
   <script type="application/ld+json">
     {
@@ -58,7 +61,8 @@
       </a>
       <div class="topbar-side">
         <span class="pill"><span class="pill-dot" aria-hidden="true"></span>колесо голосования</span>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить светлую тему" title="Включить светлую тему" aria-pressed="false">
+        <a class="lang-switch" href="en/index.html" hreflang="en" lang="en" title="Английская версия">EN</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить светлую тему" title="Включить светлую тему" aria-pressed="false">
           <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
           <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.7 8.7 0 1 0 11.1 11.1z"/></svg>
         </button>
@@ -179,7 +183,7 @@
   </div>
 
   <script src="site.js?v=2" defer></script>
-  <script src="presets.js?v=1" defer></script>
-  <script src="app.js?v=3" defer></script>
+  <script src="presets.js?v=2" defer></script>
+  <script src="app.js?v=4" defer></script>
 </body>
 </html>

@@ -1,81 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://koleso-vybora.ru/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/kolesa</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kolesa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/kolesa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kolesa"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/kolesa</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kolesa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/kolesa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kolesa"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/articles</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/articles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/articles"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/articles"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/articles</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/articles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/articles"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/articles"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/faq</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/faq"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/faq</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/faq"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/kak-chestno-razygrat-spor</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kak-chestno-razygrat-spor"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/how-to-settle-an-argument-fairly"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kak-chestno-razygrat-spor"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/how-to-settle-an-argument-fairly</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kak-chestno-razygrat-spor"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/how-to-settle-an-argument-fairly"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kak-chestno-razygrat-spor"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/kak-vybrat-iz-treh-variantov</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kak-vybrat-iz-treh-variantov"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/choose-between-three-options"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kak-vybrat-iz-treh-variantov"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/choose-between-three-options</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kak-vybrat-iz-treh-variantov"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/choose-between-three-options"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kak-vybrat-iz-treh-variantov"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/randomajzer-ili-intuiciya</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/randomajzer-ili-intuiciya"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/randomizer-or-intuition"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/randomajzer-ili-intuiciya"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/randomizer-or-intuition</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/randomajzer-ili-intuiciya"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/randomizer-or-intuition"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/randomajzer-ili-intuiciya"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/koleso-na-strime</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/koleso-na-strime"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/wheel-on-stream"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/koleso-na-strime"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/wheel-on-stream</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/koleso-na-strime"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/wheel-on-stream"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/koleso-na-strime"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/kak-sostavit-spisok-variantov</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kak-sostavit-spisok-variantov"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/how-to-build-a-list-of-options"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kak-sostavit-spisok-variantov"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/how-to-build-a-list-of-options</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/kak-sostavit-spisok-variantov"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/how-to-build-a-list-of-options"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/kak-sostavit-spisok-variantov"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/koleso-dlya-kompanii</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/koleso-dlya-kompanii"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/wheel-for-a-group"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/koleso-dlya-kompanii"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/wheel-for-a-group</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/koleso-dlya-kompanii"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/wheel-for-a-group"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/koleso-dlya-kompanii"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/chto-prigotovit-koleso</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/chto-prigotovit-koleso"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/what-to-cook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/chto-prigotovit-koleso"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/what-to-cook</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/chto-prigotovit-koleso"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/what-to-cook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/chto-prigotovit-koleso"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/about</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/about"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/about</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/about"/>
   </url>
   <url>
     <loc>https://koleso-vybora.ru/privacy</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/privacy"/>
+  </url>
+  <url>
+    <loc>https://koleso-vybora.ru/en/privacy</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/privacy"/>
   </url>
 </urlset>

@@ -1365,6 +1365,45 @@ a.primary {
 :root[data-theme="light"] .theme-icon--sun { display: none; }
 :root[data-theme="light"] .theme-icon--moon { display: block; }
 
+/* ============ переключатель языка ============ */
+
+.lang-switch {
+  flex: none;
+  height: 38px;
+  min-width: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(var(--tint), 0.04);
+  color: var(--text-strong);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.lang-switch:hover {
+  background: rgba(var(--tint), 0.08);
+  border-color: rgba(var(--tint), 0.2);
+  color: var(--ink);
+}
+
+.lang-switch:active { transform: scale(0.96); }
+
+.lang-switch:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.9);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .lang-switch { min-width: 38px; padding: 0 10px; font-size: 11px; }
+}
+
 @media (max-width: 480px) {
   .theme-toggle { width: 34px; height: 34px; }
 }

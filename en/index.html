@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07070d">
+  <title>Wheel Decide — spin the wheel and pick a winner</title>
+  <meta name="description" content="Add your options and spin the wheel to pick a winner. A free random picker that works offline.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230b0b14'/%3E%3Cpath d='M32 4a28 28 0 0 1 24.2 14L32 32z' fill='%238b5cf6'/%3E%3Cpath d='M56.2 18A28 28 0 0 1 43 57.2L32 32z' fill='%2322d3ee'/%3E%3Cpath d='M43 57.2A28 28 0 0 1 8.4 48L32 32z' fill='%2334d399'/%3E%3Cpath d='M8.4 48A28 28 0 0 1 8.4 16L32 32z' fill='%23fbbf24'/%3E%3Cpath d='M8.4 16A28 28 0 0 1 32 4l0 28z' fill='%23fb7185'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%230b0b14'/%3E%3C/svg%3E">
+
+  <link rel="canonical" href="https://koleso-vybora.ru/en/">
+  <link rel="alternate" hreflang="ru" href="https://koleso-vybora.ru/">
+  <link rel="alternate" hreflang="en" href="https://koleso-vybora.ru/en/">
+  <link rel="alternate" hreflang="x-default" href="https://koleso-vybora.ru/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Wheel Decide">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:url" content="https://koleso-vybora.ru/en/">
+  <meta property="og:title" content="Wheel Decide — spin the wheel and pick a winner">
+  <meta property="og:description" content="Add your options and spin the wheel. The winner is chosen fairly — no arguments, no counting rhymes.">
+  <meta property="og:image" content="https://koleso-vybora.ru/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wheel Decide — spin the wheel">
+  <meta name="twitter:description" content="Add your options and spin the wheel. The winner is chosen fairly.">
+  <meta name="twitter:image" content="https://koleso-vybora.ru/og-image.png">
+
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../styles.css?v=4">
+  <script src="../theme.js?v=1"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Wheel Decide",
+      "url": "https://koleso-vybora.ru/en/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "inLanguage": "en",
+      "description": "Spin the wheel: add your options and let it pick a winner at random.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+  </script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="app">
+    <!-- Top ad slot. It sits above the header, not above the wheel: ad rules
+         forbid a banner next to the spin button and other controls.
+         Shown when ads: true (site.js). -->
+    <div class="ad-slot ad-slot--top" data-ad-slot="top" hidden></div>
+
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Wheel Decide — home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Wheel Decide</span>
+      </a>
+      <div class="topbar-side">
+        <span class="pill"><span class="pill-dot" aria-hidden="true"></span>spin the wheel</span>
+        <a class="lang-switch" href="../index.html" hreflang="ru" lang="ru" title="Русская версия">RU</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" title="Switch to light theme" aria-pressed="false">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.7 8.7 0 1 0 11.1 11.1z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="site-nav" aria-label="Site sections">
+      <a href="index.html" aria-current="page">Wheel</a>
+      <a href="kolesa.html">Presets</a>
+      <a href="articles.html">Articles</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <main class="layout">
+      <section class="stage" aria-label="Wheel">
+        <div class="wheel-shell">
+          <div class="wheel-holder" id="wheelHolder">
+            <canvas id="wheel" role="img" aria-label="Wheel with options"></canvas>
+            <div class="pointer" aria-hidden="true"></div>
+            <button class="hub" id="spinBtn" type="button" title="Spin the wheel (Space)">
+              <span class="hub-text" id="hubText">Spin</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="stage-hint">
+          <kbd>Scroll</kbd> over the wheel, drag it, or press <kbd>Space</kbd>
+        </p>
+      </section>
+
+      <aside class="panel" aria-label="Settings">
+        <div class="panel-head">
+          <h2>Options</h2>
+          <span class="count" id="count">0 options</span>
+        </div>
+
+        <form class="add-row" id="addForm" autocomplete="off">
+          <input id="addInput" type="text" placeholder="Add an option…" maxlength="60" aria-label="New option">
+          <button type="submit" aria-label="Add option">+</button>
+        </form>
+        <p class="add-hint">Several options can be pasted separated by commas</p>
+
+        <ul class="options" id="options"></ul>
+        <p class="empty" id="emptyState">Add at least two options to spin the wheel.</p>
+
+        <div class="panel-sep"></div>
+
+        <div class="toggles">
+          <label class="switch">
+            <input type="checkbox" id="eliminate">
+            <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+            <span class="switch-text">
+              <strong>Elimination mode</strong>
+              <em>The winner leaves the list</em>
+            </span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" id="sound" checked>
+            <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+            <span class="switch-text">
+              <strong>Sound</strong>
+              <em>Ticks while the wheel spins</em>
+            </span>
+          </label>
+        </div>
+
+        <div class="panel-actions">
+          <button class="ghost" id="shuffleBtn" type="button">Shuffle</button>
+          <button class="ghost danger" id="resetBtn" type="button">Reset</button>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Bottom ad slot: below the wheel, with a gap from the controls -->
+    <div class="ad-slot ad-slot--bottom" data-ad-slot="bottom" hidden></div>
+
+    <footer class="foot">
+      <span>Works offline · settings are stored in your browser</span>
+      <nav class="foot-links" aria-label="Site sections">
+        <a href="kolesa.html">Presets</a>
+        <a href="articles.html">Articles</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy policy</a>
+      </nav>
+    </footer>
+  </div>
+
+  <div class="result" id="result" hidden>
+    <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultLabel">
+      <p class="result-label" id="resultLabel">Winner</p>
+      <p class="result-value" id="resultValue">—</p>
+      <p class="result-note" id="resultNote" hidden></p>
+      <div class="result-actions">
+        <button class="primary" id="againBtn" type="button">Spin again</button>
+        <button class="ghost" id="closeBtn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span id="toastText"></span>
+    <button id="toastAction" type="button" hidden>Undo</button>
+  </div>
+
+  <noscript>The wheel needs JavaScript to work.</noscript>
+
+  <!-- Cookie notice. Appears when ads or Yandex Metrica are enabled (site.js) -->
+  <div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Cookie usage" hidden>
+    <p>
+      This site uses cookies for advertising and statistics.
+      <a href="privacy.html">Learn more</a>
+    </p>
+    <button class="primary" id="cookieOk" type="button">Got it</button>
+  </div>
+
+  <script src="../site.js?v=2" defer></script>
+  <script src="../presets.js?v=2" defer></script>
+  <script src="../app.js?v=4" defer></script>
+</body>
+</html>

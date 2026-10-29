@@ -6,7 +6,63 @@
 
 const STORAGE_KEY = 'wheel-decide.v1';
 const MAX_OPTIONS = 24;
-const DEFAULTS = ['Пицца', 'Суши', 'Бургеры', 'Паста', 'Шаурма', 'Салат'];
+
+/* Язык страницы: русские страницы в корне, английские — в папке en/,
+   там у <html> стоит lang="en". Тексты интерфейса живут только здесь. */
+const LANG = document.documentElement.lang === 'en' ? 'en' : 'ru';
+
+function plural(n) {
+  const a = Math.abs(n) % 100;
+  const b = a % 10;
+  if (a > 10 && a < 20) return 'вариантов';
+  if (b === 1) return 'вариант';
+  if (b >= 2 && b <= 4) return 'варианта';
+  return 'вариантов';
+}
+
+const TEXT = {
+  ru: {
+    brand: 'Крутилка',
+    defaults: ['Пицца', 'Суши', 'Бургеры', 'Паста', 'Шаурма', 'Салат'],
+    editHint: 'Двойной клик — изменить',
+    removeOption: (label) => `Удалить вариант «${label}»`,
+    wheelAria: (labels) => `Колесо с вариантами: ${labels}`,
+    emptyWheel: 'Пустое колесо',
+    emptyCanvas: 'пока пусто',
+    duplicate: 'Такой вариант уже есть',
+    maxOptions: (n) => `Максимум ${n} вариантов`,
+    removed: (label) => `«${label}» удалён`,
+    undo: 'Вернуть',
+    shuffled: 'Варианты перемешаны',
+    reset: 'Список сброшен к примеру',
+    eliminated: (left) => `Вариант выбыл · осталось ${left} ${plural(left)}`,
+    lastOption: 'Остался последний вариант',
+    eliminateToast: (label) => `«${label}» выбывает из списка`,
+    count: (n) => `${n} ${plural(n)}`
+  },
+  en: {
+    brand: 'Wheel Decide',
+    defaults: ['Pizza', 'Sushi', 'Burgers', 'Pasta', 'Shawarma', 'Salad'],
+    editHint: 'Double-click to edit',
+    removeOption: (label) => `Remove option “${label}”`,
+    wheelAria: (labels) => `Wheel with options: ${labels}`,
+    emptyWheel: 'Empty wheel',
+    emptyCanvas: 'nothing yet',
+    duplicate: 'That option is already in the list',
+    maxOptions: (n) => `No more than ${n} options`,
+    removed: (label) => `“${label}” removed`,
+    undo: 'Undo',
+    shuffled: 'Options shuffled',
+    reset: 'List reset to the sample',
+    eliminated: (left) => (left === 1 ? 'One option left after elimination' : `${left} options left after elimination`),
+    lastOption: 'Last option left',
+    eliminateToast: (label) => `“${label}” is out`,
+    count: (n) => `${n} ${n === 1 ? 'option' : 'options'}`
+  }
+};
+
+const T = TEXT[LANG];
+const DEFAULTS = T.defaults;
 const PALETTE = [
   '#8b5cf6', '#22d3ee', '#34d399', '#fbbf24', '#fb7185', '#60a5fa',
   '#f472b6', '#a3e635', '#fb923c', '#2dd4bf', '#c084fc', '#facc15'
@@ -108,15 +164,6 @@ const mod = (v, m) => ((v % m) + m) % m;
 const uid = () => Math.random().toString(36).slice(2, 9);
 const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
 
-function plural(n) {
-  const a = Math.abs(n) % 100;
-  const b = a % 10;
-  if (a > 10 && a < 20) return 'вариантов';
-  if (b === 1) return 'вариант';
-  if (b >= 2 && b <= 4) return 'варианта';
-  return 'вариантов';
-}
-
 function hexToRgb(hex) {
   const h = hex.replace('#', '');
   return {
@@ -187,13 +234,13 @@ function renderOptions() {
     const label = document.createElement('span');
     label.className = 'option-label';
     label.textContent = opt.label;
-    label.title = 'Двойной клик — изменить';
+    label.title = T.editHint;
 
     const del = document.createElement('button');
     del.className = 'option-del';
     del.type = 'button';
     del.textContent = '×';
-    del.setAttribute('aria-label', `Удалить вариант «${opt.label}»`);
+    del.setAttribute('aria-label', T.removeOption(opt.label));
 
     del.addEventListener('click', () => removeOption(opt.id));
     label.addEventListener('dblclick', () => startEdit(li, opt));
@@ -204,15 +251,15 @@ function renderOptions() {
 
   optionsList.append(frag);
 
-  countEl.textContent = `${options.length} ${plural(options.length)}`;
+  countEl.textContent = T.count(options.length);
   emptyEl.hidden = options.length >= 2;
   updateSpinAvailability();
   updateListFade();
   canvas.setAttribute(
     'aria-label',
     options.length
-      ? `Колесо с вариантами: ${options.map((o) => o.label).join(', ')}`
-      : 'Пустое колесо'
+      ? T.wheelAria(options.map((o) => o.label).join(', '))
+      : T.emptyWheel
   );
   drawWheel();
 }
@@ -283,9 +330,9 @@ function addOptions(raw) {
     save();
     renderOptions();
   } else if (duplicate && !overflow) {
-    toast('Такой вариант уже есть');
+    toast(T.duplicate);
   }
-  if (overflow) toast(`Максимум ${MAX_OPTIONS} вариантов`);
+  if (overflow) toast(T.maxOptions(MAX_OPTIONS));
 }
 
 function removeOption(id) {
@@ -296,7 +343,7 @@ function removeOption(id) {
   const [removed] = options.splice(index, 1);
   save();
   renderOptions();
-  toast(`«${removed.label}» удалён`, 'Вернуть', () => {
+  toast(T.removed(removed.label), T.undo, () => {
     options.splice(Math.min(index, options.length), 0, removed);
     save();
     renderOptions();
@@ -311,7 +358,7 @@ function shuffleOptions() {
   }
   save();
   renderOptions();
-  toast('Варианты перемешаны');
+  toast(T.shuffled);
 }
 
 function resetOptions() {
@@ -320,7 +367,7 @@ function resetOptions() {
   options = DEFAULTS.map((label) => ({ id: uid(), label }));
   save();
   renderOptions();
-  toast('Список сброшен к примеру', 'Вернуть', () => {
+  toast(T.reset, T.undo, () => {
     options = previous;
     save();
     renderOptions();
@@ -485,7 +532,7 @@ function drawEmptyWheel(cx, cy, R, scale) {
   ctx.font = `500 ${Math.round(12 * clamp(scale, 0.8, 1.3))}px Inter, system-ui, sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('пока пусто', cx, cy);
+  ctx.fillText(T.emptyCanvas, cx, cy);
   ctx.restore();
 }
 
@@ -612,13 +659,9 @@ function onSpinEnd(winnerId) {
     renderOptions();
 
     const left = options.length;
-    setResultNote(
-      left > 1
-        ? `Вариант выбыл · осталось ${left} ${plural(left)}`
-        : 'Остался последний вариант'
-    );
+    setResultNote(left > 1 ? T.eliminated(left) : T.lastOption);
 
-    toast(`«${removed.label}» выбывает из списка`, 'Вернуть', () => {
+    toast(T.eliminateToast(removed.label), T.undo, () => {
       options.splice(Math.min(current, options.length), 0, removed);
       save();
       renderOptions();
@@ -987,7 +1030,7 @@ load();
     .slice(0, MAX_OPTIONS)
     .map((label) => ({ id: uid(), label: String(label).slice(0, 60) }));
 
-  if (preset.title) document.title = preset.title + ' — Крутилка';
+  if (preset.title) document.title = preset.title + ' — ' + T.brand;
 })();
 
 if (!options.length) {
