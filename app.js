@@ -5,7 +5,7 @@
    ============================================================ */
 
 const STORAGE_KEY = 'wheel-decide.v1';
-const MAX_OPTIONS = 24;
+const MAX_OPTIONS = 40;
 
 /* Язык страницы: русские страницы в корне, английские — в папке en/,
    там у <html> стоит lang="en". Тексты интерфейса живут только здесь. */
@@ -35,6 +35,7 @@ const TEXT = {
     undo: 'Вернуть',
     shuffled: 'Варианты перемешаны',
     reset: 'Список сброшен к примеру',
+    cleared: (n) => (n === 1 ? 'Вариант удалён' : `Удалено ${n} ${plural(n)}`),
     eliminated: (left) => `Вариант выбыл · осталось ${left} ${plural(left)}`,
     lastOption: 'Остался последний вариант',
     eliminateToast: (label) => `«${label}» выбывает из списка`,
@@ -54,6 +55,7 @@ const TEXT = {
     undo: 'Undo',
     shuffled: 'Options shuffled',
     reset: 'List reset to the sample',
+    cleared: (n) => (n === 1 ? 'Option removed' : `All options removed · ${n}`),
     eliminated: (left) => (left === 1 ? 'One option left after elimination' : `${left} options left after elimination`),
     lastOption: 'Last option left',
     eliminateToast: (label) => `“${label}” is out`,
@@ -132,6 +134,7 @@ const eliminateInput = $('#eliminate');
 const soundInput = $('#sound');
 const shuffleBtn = $('#shuffleBtn');
 const resetBtn = $('#resetBtn');
+const clearBtn = $('#clearBtn');
 const toastEl = $('#toast');
 const toastText = $('#toastText');
 const toastAction = $('#toastAction');
@@ -253,7 +256,7 @@ function renderOptions() {
 
   countEl.textContent = T.count(options.length);
   emptyEl.hidden = options.length >= 2;
-  updateSpinAvailability();
+  updateActionAvailability();
   updateListFade();
   canvas.setAttribute(
     'aria-label',
@@ -264,8 +267,10 @@ function renderOptions() {
   drawWheel();
 }
 
-function updateSpinAvailability() {
+function updateActionAvailability() {
   spinBtn.disabled = spinning || options.length < 2;
+  shuffleBtn.disabled = spinning || options.length < 2;
+  clearBtn.disabled = spinning || options.length === 0;
 }
 
 function updateListFade() {
@@ -374,6 +379,19 @@ function resetOptions() {
   });
 }
 
+function clearAllOptions() {
+  if (spinning || !options.length) return;
+  const previous = options.map((o) => ({ ...o }));
+  options = [];
+  save();
+  renderOptions();
+  toast(T.cleared(previous.length), T.undo, () => {
+    options = previous;
+    save();
+    renderOptions();
+  });
+}
+
 /* ============ рисование колеса ============ */
 
 function resizeCanvas() {
@@ -453,13 +471,14 @@ function drawWheel() {
   }
 
   // подписи
-  const fontSize = Math.round(
-    (n <= 6 ? 17 : n <= 9 ? 15 : n <= 12 ? 13 : 11) *
-    clamp(scale, 0.78, 1.3)
-  );
+  const baseFont = n <= 6 ? 17 : n <= 9 ? 15 : n <= 12 ? 13 : n <= 18 ? 11 : n <= 28 ? 10 : 9;
+  const minScale = n > 18 ? 0.92 : 0.78;
+  const fontSize = Math.max(7, Math.round(baseFont * clamp(scale, minScale, 1.3)));
   const hubR = s * 0.158;
   const pad = s * 0.05;
-  const maxWidth = Math.max(40, R - pad - hubR - 8 * scale);
+  // на плотном колесе подпись не доходит до ступицы: у центра сектор узкий
+  const innerGap = n > 20 ? s * 0.045 : 8 * scale;
+  const maxWidth = Math.max(36, R - pad - hubR - innerGap);
 
   ctx.font = `600 ${fontSize}px Inter, "Segoe UI", system-ui, sans-serif`;
   ctx.textBaseline = 'middle';
@@ -608,7 +627,7 @@ function spin(power = 1) {
 
   hideResult();
   spinning = true;
-  updateSpinAvailability();
+  updateActionAvailability();
   holder.classList.add('is-spinning');
 
   const n = options.length;
@@ -634,7 +653,7 @@ function spin(power = 1) {
   animate(rotation, rotation + delta, duration, () => {
     rotation = mod(rotation, Math.PI * 2);
     spinning = false;
-    updateSpinAvailability();
+    updateActionAvailability();
     holder.classList.remove('is-spinning');
     onSpinEnd(winnerId);
   });
@@ -951,6 +970,7 @@ addForm.addEventListener('submit', (event) => {
 
 shuffleBtn.addEventListener('click', shuffleOptions);
 resetBtn.addEventListener('click', resetOptions);
+clearBtn.addEventListener('click', clearAllOptions);
 
 eliminateInput.addEventListener('change', () => {
   settings.eliminate = eliminateInput.checked;
