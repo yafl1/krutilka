@@ -150,9 +150,11 @@ function flipCoin() {
 
   const result = randomSide();
   const extraTurns = reduceMotion ? 0 : 4 + Math.floor(Math.random() * 3);
-  const sideTurns = result === 'heads' ? 0 : 180;
+  const desired = result === 'heads' ? 0 : 180;
 
-  coinRotation += extraTurns * 360 + sideTurns;
+  // доводим угол до нужной стороны с учётом того, какой стороной монета лежала
+  coinRotation += extraTurns * 360;
+  coinRotation += ((desired - (coinRotation % 360)) + 360) % 360;
   coinEl.style.transform = `rotateX(${coinRotation}deg)`;
 
   if (!reduceMotion) {
