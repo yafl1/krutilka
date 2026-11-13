@@ -63,7 +63,11 @@ const historyEmptyEl = $c('#coinHistoryEmpty');
 const resetStatsBtn = $c('#resetStats');
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const FLIP_MS = reduceMotion ? 220 : 2400;
+// При «уменьшенном движении» монетка всё равно крутится — просто один оборот,
+// быстрее и без подскока. Иначе на ПК с выключенными анимациями Windows
+// (prefers-reduced-motion: reduce) монета молча переключалась за 0.2 с.
+const FLIP_MS = reduceMotion ? 1100 : 2400;
+const FLIP_TURNS = reduceMotion ? 1 : 4 + Math.floor(Math.random() * 3);
 
 let stats = { heads: 0, tails: 0, history: [] };
 let coinRotation = 0;
@@ -149,7 +153,7 @@ function flipCoin() {
   flipBtn.disabled = true;
 
   const result = randomSide();
-  const extraTurns = reduceMotion ? 0 : 4 + Math.floor(Math.random() * 3);
+  const extraTurns = FLIP_TURNS;
   const desired = result === 'heads' ? 0 : 180;
 
   // доводим угол до нужной стороны с учётом того, какой стороной монета лежала
@@ -196,14 +200,11 @@ flipBtn.addEventListener('click', flipCoin);
 resetStatsBtn.addEventListener('click', resetStats);
 
 coinEl.style.transform = 'rotateX(0deg)';
+coinEl.style.transitionDuration = `${FLIP_MS}ms`;
 
 loadCoinStats();
 renderStats();
 setVerdict(CT.idle, null);
-
-if (reduceMotion) {
-  coinEl.style.transitionDuration = '0.18s';
-}
 
 document.addEventListener('keydown', (event) => {
   const tag = (document.activeElement && document.activeElement.tagName) || '';
