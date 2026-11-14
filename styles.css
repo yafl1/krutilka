@@ -1584,6 +1584,14 @@ a.primary {
   display: grid;
   place-items: center;
   perspective: 1400px;
+  --coin-glow-rgb: 139, 92, 246;
+  --coin-ring-rgb: 167, 139, 250;
+}
+
+/* решка — тёплое свечение, орёл — фиолетовое */
+.coin-scene.is-tails {
+  --coin-glow-rgb: 245, 158, 11;
+  --coin-ring-rgb: 251, 191, 36;
 }
 
 .coin-scene::before {
@@ -1591,7 +1599,7 @@ a.primary {
   position: absolute;
   inset: -14%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.28), transparent 64%);
+  background: radial-gradient(circle, rgba(var(--coin-glow-rgb), 0.28), transparent 64%);
   filter: blur(30px);
   pointer-events: none;
 }
@@ -1647,14 +1655,14 @@ a.primary {
   0% {
     opacity: 0.85;
     transform: scale(0.92);
-    border-color: rgba(196, 181, 253, 0.7);
-    box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.4);
+    border-color: rgba(var(--coin-ring-rgb), 0.7);
+    box-shadow: 0 0 0 0 rgba(var(--coin-ring-rgb), 0.4);
   }
   100% {
     opacity: 0;
     transform: scale(1.24);
-    border-color: rgba(196, 181, 253, 0);
-    box-shadow: 0 0 34px 14px rgba(167, 139, 250, 0);
+    border-color: rgba(var(--coin-ring-rgb), 0);
+    box-shadow: 0 0 34px 14px rgba(var(--coin-ring-rgb), 0);
   }
 }
 

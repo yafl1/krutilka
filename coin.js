@@ -146,9 +146,10 @@ function setVerdict(text, side) {
 }
 
 /* вспышка свечения и кольцо в момент остановки */
-function playLanding() {
+function playLanding(side) {
   if (!sceneEl) return;
   sceneEl.classList.remove('is-landed');
+  sceneEl.classList.toggle('is-tails', side === 'tails');
   // перезапуск CSS-анимации
   void sceneEl.offsetWidth;
   sceneEl.classList.add('is-landed');
@@ -162,6 +163,7 @@ function flipCoin() {
 
   flipping = true;
   flipBtn.disabled = true;
+  if (sceneEl) sceneEl.classList.remove('is-landed');
 
   const result = randomSide();
   const extraTurns = FLIP_TURNS;
@@ -193,7 +195,7 @@ function flipCoin() {
     renderStats();
 
     setVerdict(CT.result(result), result);
-    playLanding();
+    playLanding(result);
   }, FLIP_MS);
 }
 
