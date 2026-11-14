@@ -1596,6 +1596,68 @@ a.primary {
   pointer-events: none;
 }
 
+/* монетка остановилась: вспышка свечения за ней */
+.coin-scene.is-landed::before {
+  animation: coinLandGlow 1.1s cubic-bezier(0.16, 0.84, 0.3, 1);
+}
+
+.coin-scene.is-landed {
+  animation: coinLandBump 0.38s ease-out;
+}
+
+/* расходящееся кольцо в момент остановки */
+.coin-scene::after {
+  content: "";
+  position: absolute;
+  inset: 2%;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+
+.coin-scene.is-landed::after {
+  animation: coinLandRing 0.9s ease-out;
+}
+
+@keyframes coinLandGlow {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.84);
+    filter: blur(34px) brightness(1.4);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.06);
+    filter: blur(18px) brightness(2.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(30px) brightness(1);
+  }
+}
+
+@keyframes coinLandBump {
+  0% { transform: translateY(-6px) scale(1.015); }
+  55% { transform: translateY(2px) scale(0.99); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes coinLandRing {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.92);
+    border-color: rgba(196, 181, 253, 0.7);
+    box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.24);
+    border-color: rgba(196, 181, 253, 0);
+    box-shadow: 0 0 34px 14px rgba(167, 139, 250, 0);
+  }
+}
+
 .coin-toss {
   position: relative;
   z-index: 1;

@@ -51,6 +51,7 @@ const $c = (sel) => document.querySelector(sel);
 
 const coinEl = $c('#coin');
 const tossEl = $c('#coinToss');
+const sceneEl = $c('.coin-scene');
 const flipBtn = $c('#flipBtn');
 const verdictEl = $c('#coinResult');
 const totalEl = $c('#coinTotal');
@@ -66,8 +67,8 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 // При «уменьшенном движении» монетка всё равно крутится — просто один оборот,
 // быстрее и без подскока. Иначе на ПК с выключенными анимациями Windows
 // (prefers-reduced-motion: reduce) монета молча переключалась за 0.2 с.
-const FLIP_MS = reduceMotion ? 1100 : 2400;
-const FLIP_TURNS = reduceMotion ? 1 : 4 + Math.floor(Math.random() * 3);
+const FLIP_MS = reduceMotion ? 1800 : 2400;
+const FLIP_TURNS = reduceMotion ? 3 : 4 + Math.floor(Math.random() * 3);
 
 let stats = { heads: 0, tails: 0, history: [] };
 let coinRotation = 0;
@@ -144,6 +145,16 @@ function setVerdict(text, side) {
   verdictEl.classList.toggle('is-tails', side === 'tails');
 }
 
+/* вспышка свечения и кольцо в момент остановки */
+function playLanding() {
+  if (!sceneEl) return;
+  sceneEl.classList.remove('is-landed');
+  // перезапуск CSS-анимации
+  void sceneEl.offsetWidth;
+  sceneEl.classList.add('is-landed');
+  window.setTimeout(() => sceneEl.classList.remove('is-landed'), 1200);
+}
+
 /* ============ бросок ============ */
 
 function flipCoin() {
@@ -182,6 +193,7 @@ function flipCoin() {
     renderStats();
 
     setVerdict(CT.result(result), result);
+    playLanding();
   }, FLIP_MS);
 }
 
