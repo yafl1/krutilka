@@ -1748,27 +1748,16 @@ a.primary {
 
 .coin-emblem {
   font-family: var(--display);
-  font-size: clamp(72px, 26vw, 124px);
+  font-size: clamp(30px, 10.5vw, 46px);
   font-weight: 700;
+  letter-spacing: 0.05em;
   line-height: 1;
-  color: rgba(12, 10, 26, 0.76);
-  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.22);
-  transform: translateY(-6%);
-}
-
-.coin-face--tails .coin-emblem { color: rgba(68, 33, 4, 0.8); }
-
-.coin-caption {
-  position: absolute;
-  bottom: 16%;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(12, 10, 26, 0.78);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.22);
 }
 
-.coin-face--tails .coin-caption { color: rgba(68, 33, 4, 0.66); }
+.coin-face--tails .coin-emblem { color: rgba(68, 33, 4, 0.82); }
 
 .coin-verdict {
   margin: 0;
